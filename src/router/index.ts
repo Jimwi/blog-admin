@@ -2,11 +2,24 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import MainLayout from '@/components/main-layout/MainLayout.vue'
 import routeUtils from '@/utils/routeUtils'
-import lodash from 'lodash'
+import lodash, { fromPairs } from 'lodash'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
+  {
+    path: '/',
+    name: 'MainLayout',
+    component: MainLayout,
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/views/Home.vue')
+      }
+    ]
+  },
   {
     path: '/login',
     name: 'Login',
@@ -21,8 +34,15 @@ const routes: Array<RouteConfig> = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((from, to, next) => {
+  next()
+})
+
+router.afterEach(() => {
+
 })
 
 export default router

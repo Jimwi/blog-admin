@@ -2,9 +2,10 @@ import { Module, VuexModule, getModule, Mutation, Action } from 'vuex-module-dec
 import store from '@/store/index'
 import { MenuData, TagData } from '@/model'
 import lodash from 'lodash'
+import menuApi from '@/api/menu'
 
 @Module({ name: 'menuState', store, dynamic: true })
-class menuModule extends VuexModule {
+class MenuModule extends VuexModule {
   menuList: MenuData[] = []
   isCollapse = false
   openedTags: TagData[] = []
@@ -65,7 +66,7 @@ class menuModule extends VuexModule {
   }
 }
 
-export const menuState = getModule(menuModule)
+export const menuState = getModule(MenuModule)
 
 const menuListStr = window.sessionStorage.getItem('menuList')
 if (!lodash.isNull(menuListStr)) {

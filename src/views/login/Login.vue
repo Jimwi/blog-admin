@@ -20,6 +20,5 @@ export default class Login extends Vue {
 .login-wrapper {
   display: grid;
   justify-items: center;
-  grid-template-rows: 1fr;
 }
 </style>
