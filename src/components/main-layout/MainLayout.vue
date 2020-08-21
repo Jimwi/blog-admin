@@ -55,6 +55,7 @@ export default class MainLayout extends Vue {
   .el-aside {
     background-color: #545c64;
     color: #fff;
+    transition: width 0.3s;
   }
   .el-header {
     height: 50px !important;

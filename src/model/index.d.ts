@@ -19,3 +19,16 @@ export interface TagData {
   name: string
   title: string
 }
+
+export interface AuthInfo {
+  accessToken: string
+  createdAt: number
+  expiresIn: number
+  refreshToken: string
+  scope: string
+  tokenType: string
+}
+
+export interface UserInfo {
+
+}

@@ -6,7 +6,7 @@ import menuApi from '@/api/menu'
 
 @Module({ name: 'menuState', store, dynamic: true })
 class MenuModule extends VuexModule {
-  menuList: MenuData[] = []
+  menuList: MenuData[] = menuApi.getMenuList()
   isCollapse = false
   openedTags: TagData[] = []
 

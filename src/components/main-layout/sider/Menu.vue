@@ -40,8 +40,8 @@ export default class Menu extends Vue {
     border: 0;
     .el-menu-item,
     .el-submenu__title {
-      height: 50px;
-      line-height: 50px;
+      height: 45px;
+      line-height: 45px;
     }
   }
 }

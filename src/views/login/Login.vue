@@ -11,7 +11,7 @@ import authApi from '@/api/auth'
 @Component({ name: 'Login' })
 export default class Login extends Vue {
   login () {
-    console.log('login')
+    authApi.login()
   }
 }
 </script>
