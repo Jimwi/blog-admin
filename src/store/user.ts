@@ -15,7 +15,13 @@ function emptyAuthInfo () {
 }
 
 function emptyUserInfo () {
-  return {}
+  return {
+    avatarUrl: '',
+    email: '',
+    id: 0,
+    login: '',
+    name: ''
+  }
 }
 
 @Module({ name: 'userState', store, dynamic: true })
@@ -43,6 +49,18 @@ class UserModule extends VuexModule {
   updateUserInfo (userInfo: UserInfo) {
     this.context.commit('setUserInfo', userInfo)
     window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+  }
+
+  @Action
+  removeUserInfo () {
+    this.context.commit('setUserInfo', emptyUserInfo())
+    window.sessionStorage.removeItem('userInfo')
+  }
+
+  @Action
+  removeAuthInfo () {
+    this.context.commit('setAuthInfo', emptyAuthInfo())
+    window.sessionStorage.removeItem('authInfo')
   }
 }
 

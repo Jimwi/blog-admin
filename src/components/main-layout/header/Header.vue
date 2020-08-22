@@ -11,7 +11,7 @@
     <div class="user-center">
       <el-dropdown placement="bottom-start" trigger="click">
         <div class="el-dropdown-link">
-          <el-avatar size="small" src="favicon.ico"></el-avatar>
+          <el-avatar size="small" :src="avatarUrl"></el-avatar>
           <span class="username">{{ username }}</span>
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -28,6 +28,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { TagData } from '@/model'
 import { menuState } from '@/store/menu'
+import { userState } from '@/store/user'
 
 @Component({ name: 'Header' })
 export default class Header extends Vue {
@@ -48,8 +49,14 @@ export default class Header extends Vue {
     return 'someone'
   }
 
+  get avatarUrl (): string {
+    return userState.userInfo.avatarUrl
+  }
+
   logout () {
-    console.log('logout')
+    userState.removeUserInfo()
+    userState.removeAuthInfo()
+    this.$router.push('/login')
   }
 }
 </script>

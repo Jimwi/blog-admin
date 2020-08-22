@@ -18,6 +18,7 @@ export interface TagData {
   url: string
   name: string
   title: string
+  view?: string
 }
 
 export interface AuthInfo {
@@ -30,5 +31,9 @@ export interface AuthInfo {
 }
 
 export interface UserInfo {
-
+  id: number
+  login: string
+  name: string
+  avatarUrl: string
+  email: string
 }

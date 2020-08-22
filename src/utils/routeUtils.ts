@@ -15,7 +15,7 @@ const buildOneRoute = (menu: MenuData, routes: RouteConfig[], breadcrumbList: Ta
     routes.push({
       name: name,
       path: menu.url,
-      component: () => import('@/view' + ('/' + menu.url.substring(0, i) + name + 'vue').replace(/(?<!\/)\/+(?!\/)/g, '/')),
+      component: () => import('@/view' + ('/' + menu.url.substring(0, i) + '/' + name + 'vue').replace(/\/+/g, '/')),
       meta: { breadcrumbList: lodash.cloneDeep(breadcrumbList) }
     })
   }
@@ -29,6 +29,7 @@ const buildRoutes = (menuList: MenuData[]): RouteConfig[] => {
     buildOneRoute(menu, routes, breadcrumbList)
     breadcrumbList.pop()
   })
+  console.log(routes)
   return routes
 }
 

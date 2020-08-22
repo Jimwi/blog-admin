@@ -36,6 +36,10 @@ export default class MainLayout extends Vue {
     return menuState.isCollapse ? '64px' : '220px'
   }
 
+  get cacheViews (): string[] {
+    return menuState.openedTags.map(t => t.view!)
+  }
+
   mounted () {
     this.$router.addRoutes([{
       path: '/',

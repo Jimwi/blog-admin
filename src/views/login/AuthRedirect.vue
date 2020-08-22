@@ -10,19 +10,17 @@ import { userState } from '@/store/user'
 @Component({ name: 'AuthRedict' })
 export default class AuthRedict extends Vue {
   async mounted () {
-    console.log(this.$route)
     try {
       const code = this.$route.query.code as string
       const authInfo = await authApi.getAuthInfo(code)
-      console.log(authInfo)
       userState.updateAuthInfo(authInfo)
-
+      const userInfo = await authApi.getUserInfo(authInfo.accessToken)
+      userState.updateUserInfo(userInfo)
+      this.$router.replace('/')
     } catch (err) { }
   }
 
-  render () {
-
-  }
+  render () { }
 }
 </script>
 
